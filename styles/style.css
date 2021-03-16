@@ -129,10 +129,22 @@ nav {
 
 .content .plant {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 100vh;
+  bottom: 10vh;
+  left: 15%;
+  height: 80vh;
   width: auto;
+  pointer-events: none;
+}
+
+.content .shadow {
+  width: 150px;
+  height: 10px;
+  position: absolute;
+  bottom: 10vh;
+  left: 25%;
+  background: rgba(0, 0, 0, 0.25);
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
 }
 
 .content h1 {
@@ -145,6 +157,7 @@ nav {
 .content h1 span {
   position: absolute;
   top: -40%;
+  color: #c6d1c0;
 }
 
 .product {
@@ -189,16 +202,129 @@ nav {
 
 .product .product-content .details {
   padding: 10px 25px;
-  background: #c6d1c0;
+  background: #e3e1e3;
   color: black;
-  border: 2px solid #c6d1c0;
-  border-radius: 5px;
+  border: 2px solid black;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .product .product-content .details:hover {
-  background: #c6d1c0;
-  color: #fafafa;
+  border: 2px solid #c6d1c0;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1450px) {
+  .content {
+    min-height: 90vh;
+    width: 100%;
+    padding: 100px 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    position: relative;
+  }
+  .content .plant {
+    left: 5%;
+  }
+  .content .shadow {
+    left: 20%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .content {
+    min-height: 90vh;
+    width: 100%;
+    padding: 100px 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  .content .plant {
+    position: absolute;
+    bottom: 20vh;
+    left: -30%;
+    height: 80vh;
+    width: auto;
+    pointer-events: none;
+    animation: upDown 5s ease-in-out  infinite alternate-reverse;
+  }
+  .content .shadow {
+    bottom: 10vh;
+    left: 0%;
+    animation: shadow 5s ease-in-out 0.2s infinite alternate-reverse;
+  }
+  .content h1 {
+    margin-right: 10%;
+  }
+}
+
+@-webkit-keyframes upDown {
+  from {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  to {
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+}
+
+@keyframes upDown {
+  from {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  to {
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+}
+
+@-webkit-keyframes shadow {
+  from {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    scale: 1;
+  }
+  to {
+    -webkit-transform: translateX(10%);
+            transform: translateX(10%);
+    scale: 2;
+  }
+}
+
+@keyframes shadow {
+  from {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    scale: 1;
+  }
+  to {
+    -webkit-transform: translateX(10%);
+            transform: translateX(10%);
+    scale: 2;
+  }
 }
 /*# sourceMappingURL=style.css.map */

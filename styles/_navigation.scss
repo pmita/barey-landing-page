@@ -49,10 +49,20 @@ nav{
     position: relative;
     .plant{
         position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 100vh;
+        bottom: 10vh;
+        left: 15%;
+        height: 80vh;
         width: auto;
+        pointer-events: none;
+    }
+    .shadow{
+        width: 150px;
+        height: 10px;
+        position: absolute;
+        bottom: 10vh;
+        left: 25%;
+        background: rgba(0,0,0,0.25);
+        filter: blur(10px);
     }
     h1{
         margin-right: 30%;
@@ -62,6 +72,7 @@ nav{
         span{
             position: absolute;
             top: -40%;
+            color: $highlight;
         }
     }
 }
@@ -79,15 +90,79 @@ nav{
         }
         .details{
             padding: 10px 25px;
-            background: $highlight;
+            background: $background;
             color: black;
-            border: 2px solid $highlight;
-            border-radius: 5px;
+            border: 2px solid black;
             transition: all 0.3s ease;
             &:hover{
-                background: $highlight;
-                color: $white;
+                border: 2px solid $highlight;
+                cursor: pointer;
             }
         }
+    }
+}
+
+@media screen and(max-width: 1450px){
+    .content{
+        min-height: 90vh;
+        width: 100%;
+        padding: 100px 100px;
+        @include flex(column, space-between, flex-end);
+        position: relative;
+        .plant{
+            left: 5%;
+        }
+        .shadow{
+            left: 20%;
+        }
+    }
+}
+
+@media screen and(max-width: 1024px){
+    .content{
+        min-height: 90vh;
+        width: 100%;
+        padding: 100px 50px;
+        @include flex(column, center, flex-end);
+        .plant{
+            position: absolute;
+            bottom: 20vh;
+            left: -30%;
+            height: 80vh;
+            width: auto;
+            pointer-events: none;
+
+            animation: upDown 5s ease-in-out  infinite alternate-reverse;
+        }
+        .shadow{
+            bottom: 10vh;
+            left: 0%;
+
+            animation: shadow 5s ease-in-out 0.2s infinite alternate-reverse;
+
+        }
+        h1{
+            margin-right: 10%;
+        }
+    }
+}
+
+@keyframes upDown{
+    from{
+        transform: translateY(0%);
+    }
+    to{
+        transform: translateY(5%);
+    }
+}
+
+@keyframes shadow{
+    from{
+        transform: translateX(0%);
+        scale: 1;
+    }
+    to{
+        transform: translateX(10%);
+        scale: 2;
     }
 }
