@@ -1,5 +1,5 @@
 .landing-page{
-    background: $background;
+    background: $highlight;
     color: black;
 }
 
@@ -49,37 +49,29 @@ nav{
     position: relative;
     .plant{
         position: absolute;
-        bottom: 10vh;
-        left: 15%;
-        height: 80vh;
-        width: auto;
+        bottom: 0;
+        left: 0;
+        height: auto;
+        width: 50vw;
         pointer-events: none;
     }
-    .shadow{
-        width: 150px;
-        height: 10px;
+}
+
+.headline{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16rem;
+    position: relative;
+    align-self: center;
+    span{
         position: absolute;
-        bottom: 10vh;
-        left: 25%;
-        background: rgba(0,0,0,0.25);
-        filter: blur(10px);
-    }
-    h1{
-        margin-right: 30%;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 16rem;
-        position: relative;
-        span{
-            position: absolute;
-            top: -40%;
-            color: $highlight;
-        }
+        top: -40%;
+        color: $highlight;
     }
 }
 
 .product{
-    height: 400px;
-    width: 400px;
+    min-height: 400px;
+    width: 500px;
     @include flex(row, space-between,center);
     .product-content{
         height: 100%;
@@ -88,81 +80,116 @@ nav{
         h4{
             margin: 50px 0;
         }
-        .details{
-            padding: 10px 25px;
+    }
+}
+
+.details{
+    padding: 10px 25px;
+    background: $highlight;
+    color: $white;
+    border: 2px solid $white;
+    transition: all 0.3s ease;
+    &:hover{
+        background-color: $white;
+        color: $highlight;
+        cursor: pointer;
+    }
+}
+
+/*Add styling to the cursor*/
+.cursor{
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255, 0.25);
+    backdrop-filter: blur(10px);
+    @include flex(row, center, center);
+}
+
+.cursor-active{
+    width: 75px;
+    height: 75px;
+    background: $highlight;
+    border:3px solid $highlight;
+}
+
+.cursor-text{
+    font-size: 2rem;
+    color: black;
+}
+
+/*iPad Pro styling*/
+@media screen and(max-width: 1024px){
+    .content{
+        padding: 100px 100px;
+        @include flex(column, flex-start, center);
+        .plant{
+            width: 80vw;
+            z-index: 1;
+        }
+        .product{
             background: $background;
-            color: black;
-            border: 2px solid black;
-            transition: all 0.3s ease;
-            &:hover{
-                border: 2px solid $highlight;
-                cursor: pointer;
+            z-index: 100;
+        }
+    }
+}
+
+/*iPad styling*/
+@media screen and(max-width: 768px){
+    html{
+        font-size: 52%;
+    }
+    .content{
+        padding: 100px 100px;
+        @include flex(column, flex-start, center);
+        .plant{
+            width: 70vw;
+            left: 0%;
+            transform: translateX(-20%);
+            z-index: 1;
+        }
+        .product{
+            background: none;
+            z-index: 100;
+        }
+    }
+}
+
+/*iPhone 6/7/8 Plus styling*/
+@media screen and(max-width: 414px){
+    .content{
+        padding: 25px;
+        @include flex(column, center, center);
+        .plant{
+            display: none;
+        }
+    }
+
+    .headline{
+            font-size: 8rem;
+        }
+
+    .product{
+        width: 360px;
+        @include flex(column, space-between,center);
+        img{
+            flex: 1;
+            height: 100px;
+            width: auto;
+        }
+        .product-content{
+            flex: 2;
+            width: 100%;
+            @include flex(column, center, center);
+            h4{
+                margin: 25px 0;
             }
         }
     }
 }
 
-@media screen and(max-width: 1450px){
-    .content{
-        min-height: 90vh;
-        width: 100%;
-        padding: 100px 100px;
-        @include flex(column, space-between, flex-end);
-        position: relative;
-        .plant{
-            left: 5%;
-        }
-        .shadow{
-            left: 20%;
-        }
-    }
-}
 
-@media screen and(max-width: 1024px){
-    .content{
-        min-height: 90vh;
-        width: 100%;
-        padding: 100px 50px;
-        @include flex(column, center, flex-end);
-        .plant{
-            position: absolute;
-            bottom: 20vh;
-            left: -30%;
-            height: 80vh;
-            width: auto;
-            pointer-events: none;
 
-            animation: upDown 5s ease-in-out  infinite alternate-reverse;
-        }
-        .shadow{
-            bottom: 10vh;
-            left: 0%;
-
-            animation: shadow 5s ease-in-out 0.2s infinite alternate-reverse;
-
-        }
-        h1{
-            margin-right: 10%;
-        }
-    }
-}
-
-@keyframes upDown{
-    from{
-        transform: translateY(0%);
-    }
-    to{
-        transform: translateY(5%);
-    }
-}
-
-@keyframes shadow{
-    from{
-        transform: translateX(0%);
-        scale: 1;
-    }
-    to{
-        transform: translateX(10%);
-        scale: 2;
-    }
-}
